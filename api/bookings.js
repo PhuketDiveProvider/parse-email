@@ -85,7 +85,7 @@ module.exports = async (req, res) => {
         child = 0,
         infant = 0,
         paid = null,
-        channel = 'Website',
+        channel = 'GYG',
         national_park_fee = false,
         no_transfer = false
       } = req.body;

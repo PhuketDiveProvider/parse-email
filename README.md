@@ -20,7 +20,7 @@ A comprehensive booking management system for tour operators, featuring email pa
 - **Customer Email Communication**: Send booking confirmation emails directly to customers
 
 ### Analytics & Reporting
-- **Sales Analytics**: Channel breakdown (Viator vs Website)
+- **Sales Analytics**: Channel breakdown (Viator vs GYG)
 - **Revenue Tracking**: Total sales, benefits, and passenger counts
 - **Period-based Analysis**: This month, last month, custom periods
 - **Average Metrics**: Average sales and benefits per channel
@@ -193,7 +193,7 @@ The system is optimized for Vercel deployment with:
 Track your business performance with:
 - Real-time booking counts
 - Revenue and benefit analysis
-- Channel performance (Viator vs Website)
+- Channel performance (Viator vs GYG)
 - Period-over-period comparisons
 - Average transaction values
 - Passenger count analytics

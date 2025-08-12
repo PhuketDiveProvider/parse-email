@@ -158,7 +158,7 @@ module.exports = async (req, res) => {
   // Helper to get channel filter SQL and params
   function getChannelFilterSql(col = 'booking_number') {
     if (!channel) return { sql: '', params: [] };
-    if (channel === 'Website') return { sql: `AND ${col} LIKE '6%'`, params: [] };
+            if (channel === 'GYG') return { sql: `AND ${col} LIKE '6%'`, params: [] };
     if (channel === 'Viator') return { sql: `AND ${col} LIKE '1%'`, params: [] };
     if (channel === 'OTA') return { sql: `AND (${col} LIKE 'GYG%' OR (${col} NOT LIKE '6%' AND ${col} NOT LIKE '1%'))`, params: [] };
     return { sql: '', params: [] };
@@ -347,13 +347,13 @@ module.exports = async (req, res) => {
         viatorCount++;
         viatorPassengers += pax;
       } else {
-        // All other booking numbers go to Website (including '6', 'GYG', and any others)
+        // All other booking numbers go to GYG (including '6', 'GYG', and any others)
         websiteCount++;
         websitePassengers += pax;
       }
     });
     const channels = [
-      { channel: 'Website', count: websiteCount, passengers: websitePassengers },
+              { channel: 'GYG', count: websiteCount, passengers: websitePassengers },
       { channel: 'Viator', count: viatorCount, passengers: viatorPassengers }
     ];
     // Add cache control headers to prevent caching

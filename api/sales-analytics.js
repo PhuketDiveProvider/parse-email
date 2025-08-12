@@ -18,10 +18,10 @@ export default async function handler(req, res) {
         UPDATE bookings b
         SET channel = 
           CASE 
-            WHEN b.booking_number LIKE 'GYG%' THEN 'Website'
+            WHEN b.booking_number LIKE 'GYG%' THEN 'GYG'
             WHEN pe.sender ILIKE '%bokun.io%' THEN 'Viator'
-            WHEN pe.sender ILIKE '%info@tours.co.th%' THEN 'Website'
-            ELSE 'Website'
+            WHEN pe.sender ILIKE '%info@tours.co.th%' THEN 'GYG'
+            ELSE 'GYG'
           END
         FROM parsed_emails pe
         WHERE b.booking_number = pe.booking_number
@@ -30,7 +30,7 @@ export default async function handler(req, res) {
       // Also update bookings that don't have parsed_emails records
       const result2 = await client.query(`
         UPDATE bookings 
-        SET channel = 'Website'
+        SET channel = 'GYG'
         WHERE booking_number NOT IN (SELECT booking_number FROM parsed_emails)
       `);
       
@@ -146,7 +146,7 @@ export default async function handler(req, res) {
     
     // No cancelled/deleted filters needed - cancelled bookings are completely removed from DB
     
-    // FIXED: Only 2 channels - Viator (bokun emails except GYG) and Website (info@tours.co.th + GYG)
+    // FIXED: Only 2 channels - Viator (bokun emails except GYG) and GYG (info@tours.co.th + GYG)
     let salesByChannelResult;
     if (dateFilter) {
       salesByChannelResult = await client.query(`

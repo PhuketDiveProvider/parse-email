@@ -204,7 +204,7 @@ module.exports = async (req, res) => {
       });
       
       const websiteBookings = bookings.filter(b => {
-        // Website: Everything else (not starting with "1")
+        // GYG: Everything else (not starting with "1")
         const bookingNumber = (b.booking_number || '').toString();
         return !bookingNumber.startsWith('1');
       });

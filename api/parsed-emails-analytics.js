@@ -16,9 +16,9 @@ export default async function handler(req, res) {
     const bySellerResult = await client.query(
       `SELECT
         CASE
-          WHEN sender ILIKE '%info@tours.co.th%' THEN 'Website'
+          WHEN sender ILIKE '%info@tours.co.th%' THEN 'GYG'
           WHEN sender ILIKE '%bokun.io%' THEN 'Viator'
-          ELSE 'Website'
+          ELSE 'GYG'
         END AS seller,
         COUNT(*) AS count
       FROM parsed_emails
@@ -29,7 +29,7 @@ export default async function handler(req, res) {
     const bySourceResult = await client.query(
       `SELECT COALESCE(source_email, 'Unknown') AS source_email, COUNT(*) AS count FROM parsed_emails GROUP BY source_email ORDER BY count DESC`
     );
-    // Bookings grouped by channel (OTA, WebSite, etc)
+    // Bookings grouped by channel (OTA, GYG, etc)
     const byChannelResult = await client.query(
       `SELECT
         CASE
